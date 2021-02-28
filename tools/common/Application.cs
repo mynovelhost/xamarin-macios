@@ -1375,19 +1375,7 @@ namespace Xamarin.Bundler {
 		// revision/testing to be used so desired.
 		public bool IsAOTCompiled (string assembly)
 		{
-			if (Platform == ApplePlatform.MacOSX)
-				throw ErrorHelper.CreateError (99, Errors.MX0099, "IsAOTCompiled isn't a valid operation for macOS apps.");
-
-			if (!UseInterpreter)
-				return true;
-
-			// IsAOTCompiled and IsInterpreted are not opposites: mscorlib.dll can be both:
-			// - mscorlib will always be processed by the AOT compiler to generate required wrapper functions for the interpreter to work
-			// - mscorlib might also be fully AOT-compiled (both when the interpreter is enabled and when it's not)
-			if (assembly == "mscorlib")
-				return true;
-
-			return !IsInterpreted (assembly);
+			return false;
 		}
 
 		public string AssemblyName {
